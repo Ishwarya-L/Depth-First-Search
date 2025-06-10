@@ -1,0 +1,91 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMAxQ8mrAXwBKQ11GJSoRpb",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Ishwarya-L/Depth-First-Search/blob/main/Depth%20First%20Search\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "PtTJOZrG6Z2P",
+        "outputId": "58a1a5ec-8137-4b86-d935-c7ee1d2a25e1"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "A\n",
+            "B\n",
+            "D\n",
+            "E\n",
+            "F\n",
+            "C\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "{'A', 'B', 'C', 'D', 'E', 'F'}"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 1
+        }
+      ],
+      "source": [
+        "def dfs(graph, start, visited=None):\n",
+        "    if visited is None:\n",
+        "        visited = set()\n",
+        "\n",
+        "    visited.add(start)\n",
+        "    print(start)\n",
+        "\n",
+        "    for neighbor in graph[start]:\n",
+        "        if neighbor not in visited:\n",
+        "            dfs(graph, neighbor, visited)\n",
+        "\n",
+        "    return visited\n",
+        "\n",
+        "# Example usage\n",
+        "graph = {\n",
+        "    'A': ['B', 'C'],\n",
+        "    'B': ['D', 'E'],\n",
+        "    'C': ['F'],\n",
+        "    'D': [],\n",
+        "    'E': ['F'],\n",
+        "    'F': []\n",
+        "}\n",
+        "\n",
+        "dfs(graph, 'A')\n"
+      ]
+    }
+  ]
+}
